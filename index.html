@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-Hans" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>vue_todo</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="newTodo">
+      <button @click="onClickAdd">添加</button>
+
+      <ul>
+        <li v-for="todo in todos">
+          {{ todo.text }}
+        </li>
+      </ul>
+    </div>
+
+    <script type="text/javascript">
+      var app = new Vue({
+        el: '#app',
+        data: {
+          newTodo: '',
+          todos: [
+            { text: '学习 JavaScript' },
+            { text: '学习 Vue' },
+            { text: '整个牛项目' }
+          ]
+        },
+        methods: {
+          onClickAdd() {
+            if (this.newTodo) {
+              this.todos.push({text: this.newTodo})
+              this.newTodo = ''
+            } else {
+              alert('请填写值')
+            }
+          }
+        }
+      })
+    </script>
+  </body>
+</html>
